@@ -2,7 +2,7 @@ require_relative '../lib/log_file_parser'
 require 'tempfile'
 
 describe LogFileParser do
-  subject { described_class.new(log_file_path).parse }
+  subject { described_class.new(log_file_path).perform }
 
   let(:log_file_path) do
     Tempfile.new(['webserver', '.log']).tap do |file|
@@ -33,7 +33,6 @@ describe LogFileParser do
       expect { subject }.to raise_error(InvalidFileProvided)
     end
   end
-
 
   context 'with correct file format' do
     let(:input) do

@@ -1,7 +1,7 @@
 require_relative '../lib/page_views'
 
 describe PageViews do
-  subject { described_class.new(log_file_path).display }
+  subject { described_class.new(log_file_path).perform }
 
   context 'with log file' do
     let(:log_file_path) { 'webserver.log' }
@@ -22,7 +22,7 @@ describe PageViews do
         /index            23 unique views
         /about/2          22 unique views
         /about            21 unique views
-        
+
       OUTPUT
     end
 

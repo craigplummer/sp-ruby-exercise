@@ -6,9 +6,10 @@ module Formatter
       @padding = padding
     end
 
-    def format(parsed_results)
+    def perform(parsed_results)
       visits(parsed_results).map do |path, views|
-        sprintf("%-#{padding}s %d %s", path, views_count(views), description)
+        format("%-#{padding}<path>s %<views>d %<description>s",
+               path: path, views: views_count(views), description: description)
       end.join("\n").prepend(header)
     end
   end

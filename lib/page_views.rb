@@ -6,11 +6,11 @@ class PageViews
   attr_reader :parsed_results
 
   def initialize(log_file_path)
-    @parsed_results = LogFileParser.new(log_file_path).parse
+    @parsed_results = LogFileParser.new(log_file_path).perform
   end
 
-  def display
-    Outputter.new(parsed_results, formatters).output
+  def perform
+    Outputter.new(parsed_results, formatters).perform
   end
 
   private

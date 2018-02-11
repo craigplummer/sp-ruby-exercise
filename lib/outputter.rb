@@ -6,9 +6,9 @@ class Outputter
     @formatters = formatters
   end
 
-  def output
+  def perform
     formatters.each do |formatter|
-      puts formatter.new(padding).format(parsed_results)
+      puts formatter.new(padding).perform(parsed_results)
       puts
     end
   end

@@ -2,4 +2,4 @@
 
 require_relative 'lib/page_views'
 
-PageViews.new(ARGV[0]).display
+PageViews.new(ARGV[0]).perform

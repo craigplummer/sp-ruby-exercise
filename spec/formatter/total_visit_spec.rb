@@ -1,7 +1,7 @@
 require_relative '../../lib/formatter/total_visit'
 
 describe Formatter::TotalVisit do
-  subject { described_class.new(padding).format(parsed_results) }
+  subject { described_class.new(padding).perform(parsed_results) }
 
   context 'with parsed results' do
     let(:parsed_results) do

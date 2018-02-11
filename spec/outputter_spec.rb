@@ -1,7 +1,7 @@
 require_relative '../lib/outputter'
 
 describe Outputter do
-  subject { described_class.new(parsed_response, formatters).output }
+  subject { described_class.new(parsed_response, formatters).perform }
   let(:parsed_response) do
     {
       '/index' => %w[8.9.3.1 5.6.7.8 2.3.4.5],

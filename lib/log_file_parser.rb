@@ -9,7 +9,7 @@ class LogFileParser
     @parsed_results = Hash.new { |hash, key| hash[key] = [] }
   end
 
-  def parse
+  def perform
     parse_file
     parsed_results
   end
