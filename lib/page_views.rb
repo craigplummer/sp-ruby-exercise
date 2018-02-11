@@ -20,13 +20,6 @@ class PageViews
   end
 
   def display_unique_visits
-    puts 'Unique page views:'
-    unique_visits.map  do |path, views|
-      puts "#{path} #{views.uniq.count} unique views"
-    end
-  end
-
-  def unique_visits
-    parsed_results.sort_by { |_path, ips| -ips.uniq.count }
+    Formatter::UniqueVisit.new.format(parsed_results)
   end
 end
