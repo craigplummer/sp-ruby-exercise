@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
 
-require_relative 'lib/log_file_parser'
+require_relative 'lib/page_views'
 
 PageViews.new(ARGV[0]).display

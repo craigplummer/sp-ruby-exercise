@@ -1,4 +1,5 @@
 require_relative 'log_file_parser'
+require_relative 'formatter/total_visit'
 
 class PageViews
   attr_reader :parsed_results
@@ -15,11 +16,7 @@ class PageViews
   private
 
   def display_total_visits
-    puts 'Total page views:'
-    total_visits.map do |path, views|
-      puts "#{path} #{views.count} visits"
-    end
-    puts
+    Formatter::TotalVisit.new.format(parsed_results)
   end
 
   def display_unique_visits
@@ -27,10 +24,6 @@ class PageViews
     unique_visits.map  do |path, views|
       puts "#{path} #{views.uniq.count} unique views"
     end
-  end
-
-  def total_visits
-    parsed_results.sort_by { |_path, ips| -ips.count }
   end
 
   def unique_visits
