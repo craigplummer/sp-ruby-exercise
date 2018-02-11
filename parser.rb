@@ -1,3 +1,5 @@
 #!/usr/bin/env ruby
 
-LogFileParser.new(ARGF).parse
+require_relative 'lib/log_file_parser'
+
+LogFileParser.new(ARGV[0]).parse
