@@ -1,0 +1,1 @@
+class LogFileNotFound < StandardError; end
