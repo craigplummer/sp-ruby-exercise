@@ -1,6 +1,7 @@
 require_relative 'log_file_parser'
 require_relative 'formatter/total_visit'
 require_relative 'formatter/unique_visit'
+require_relative 'outputter'
 
 class PageViews
   attr_reader :parsed_results
