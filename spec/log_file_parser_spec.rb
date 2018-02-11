@@ -35,7 +35,7 @@ describe LogFileParser do
   end
 
 
-  context 'with existing log file' do
+  context 'with correct file format' do
     let(:input) do
       <<~LOGFILE
         /index 8.9.3.1
