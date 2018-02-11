@@ -10,18 +10,12 @@ class PageViews
   end
 
   def display
-    puts display_total_visits
-    puts
-    puts display_unique_visits
+    Outputter.new(parsed_results, formatters).output
   end
 
   private
 
-  def display_total_visits
-    Formatter::TotalVisit.new.format(parsed_results)
-  end
-
-  def display_unique_visits
-    Formatter::UniqueVisit.new.format(parsed_results)
+  def formatters
+    [Formatter::TotalVisit, Formatter::UniqueVisit]
   end
 end

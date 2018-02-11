@@ -22,6 +22,7 @@ describe PageViews do
         /index            23 unique views
         /about/2          22 unique views
         /about            21 unique views
+        
       OUTPUT
     end
 
