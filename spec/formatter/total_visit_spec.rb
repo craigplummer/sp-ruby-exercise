@@ -1,7 +1,7 @@
 require_relative '../../lib/formatter/total_visit'
 
 describe Formatter::TotalVisit do
-  subject { described_class.new.format(parsed_results) }
+  subject { described_class.new(padding).format(parsed_results) }
 
   context 'with parsed results' do
     let(:parsed_results) do
@@ -11,7 +11,7 @@ describe Formatter::TotalVisit do
         '/contact' => %w[5.6.7.3]
       }
     end
-
+    let(:padding) { 13 }
     let(:expected_output) do
       <<~OUTPUT
         Total page views:
