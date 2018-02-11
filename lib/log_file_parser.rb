@@ -20,11 +20,16 @@ class LogFileParser
     file = IO.readlines(log_file_path)
     file.each do |line|
       path, ip = line.split
+      invalid_file if ip.nil?
       parsed_results[path] << ip
     end
   end
 
   def validate_file_path
     raise LogFileNotFound if log_file_path.nil? || !File.exist?(log_file_path)
+  end
+
+  def invalid_file
+    raise InvalidFileProvided
   end
 end

@@ -19,7 +19,23 @@ describe LogFileParser do
     end
   end
 
-  context 'with existing log file do' do
+  context 'with incorrect file format' do
+    let(:input) do
+      <<~LOGFILE
+        /home
+        /index
+        /home
+        /index
+      LOGFILE
+    end
+
+    it 'should raise an incorrect format error' do
+      expect { subject }.to raise_error(InvalidFileProvided)
+    end
+  end
+
+
+  context 'with existing log file' do
     let(:input) do
       <<~LOGFILE
         /index 8.9.3.1
