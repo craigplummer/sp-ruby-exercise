@@ -17,7 +17,7 @@ module Formatter
     end
 
     def header
-    'Total page views:'
+      "Total page views:\n"
     end
   end
 end

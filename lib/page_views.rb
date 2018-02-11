@@ -1,5 +1,6 @@
 require_relative 'log_file_parser'
 require_relative 'formatter/total_visit'
+require_relative 'formatter/unique_visit'
 
 class PageViews
   attr_reader :parsed_results
@@ -9,8 +10,9 @@ class PageViews
   end
 
   def display
-    display_total_visits
-    display_unique_visits
+    puts display_total_visits
+    puts
+    puts display_unique_visits
   end
 
   private

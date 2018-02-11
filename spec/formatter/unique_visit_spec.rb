@@ -15,14 +15,14 @@ describe Formatter::UniqueVisit do
     let(:expected_output) do
       <<~OUTPUT
         Unique page views:
-        /index 3 unique views
-        /home 1 unique views
-        /contact 1 unique views
+        /index        3 unique views
+        /home         1 unique views
+        /contact      1 unique views
       OUTPUT
     end
 
     it 'returns the correct output' do
-      expect { subject }.to output(expected_output).to_stdout
+      expect(subject).to eq(expected_output.chomp)
     end
   end
 end

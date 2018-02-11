@@ -15,14 +15,14 @@ describe Formatter::TotalVisit do
     let(:expected_output) do
       <<~OUTPUT
         Total page views:
-        /index 3 visits
-        /home 2 visits
-        /contact 1 visits
+        /index        3 visits
+        /home         2 visits
+        /contact      1 visits
       OUTPUT
     end
 
     it 'returns the correct output' do
-      expect { subject }.to output(expected_output).to_stdout
+      expect(subject).to eq(expected_output.chomp)
     end
   end
 end
