@@ -1,7 +1,15 @@
-require_relative '../lib/log_file_parser.rb'
+require_relative '../lib/log_file_parser'
+require 'tempfile'
 
 describe LogFileParser do
   subject { described_class.new(log_file_path).parse }
+
+  let(:log_file_path) do
+    Tempfile.new(['webserver', '.log']).tap do |file|
+      file.write(input)
+      file.rewind
+    end
+  end
 
   context 'with non existing file' do
     let(:log_file_path) { '' }
@@ -11,30 +19,28 @@ describe LogFileParser do
     end
   end
 
-  context 'with webserver.log file' do
-    let(:log_file_path) { 'webserver.log' }
-    let(:expected_output) do
-      <<~OUTPUT
-        Total page views:
-        /about/2 90 visits
-        /contact 89 visits
-        /index 82 visits
-        /about 81 visits
-        /help_page/1 80 visits
-        /home 78 visits
-
-        Unique page views:
-        /help_page/1 23 unique views
-        /contact 23 unique views
-        /home 23 unique views
-        /index 23 unique views
-        /about/2 22 unique views
-        /about 21 unique views
-      OUTPUT
+  context 'with existing log file do' do
+    let(:input) do
+      <<~LOGFILE
+        /index 8.9.3.1
+        /home 1.2.3.4
+        /index 5.6.7.8
+        /contact 5.6.7.3
+        /home 1.2.3.4
+        /index 2.3.4.5
+      LOGFILE
     end
 
-    it 'should return a list of page vists' do
-      expect { subject }.to output(expected_output).to_stdout
+    let(:expected_result) do
+      {
+        '/index' => %w[8.9.3.1 5.6.7.8 2.3.4.5],
+        '/home' => %w[1.2.3.4 1.2.3.4],
+        '/contact' => %w[5.6.7.3]
+      }
+    end
+
+    it 'should parse file and return hash map' do
+      expect(subject).to eq(expected_result)
     end
   end
 end

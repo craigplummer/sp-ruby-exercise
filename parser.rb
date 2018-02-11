@@ -2,4 +2,4 @@
 
 require_relative 'lib/log_file_parser'
 
-LogFileParser.new(ARGV[0]).parse
+PageViews.new(ARGV[0]).display
