@@ -8,7 +8,7 @@ Use this test to demonstrate your understanding of OO and TDD.
 Write a ruby script that:
 
 1. Receives a log as argument (webserver.log is provided)
-  e.g.: ./parser.rb webserver.log
+  e.g.: `./parser.rb webserver.log`
 
 2. Returns the following:
 
